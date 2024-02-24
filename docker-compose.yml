@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: elasticsearch:8.8.0
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://elasticsearch:9200/" ]
+    expose:
+      - '9200'
+      - '9300'
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+      target: base
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./src:/home/node/app/src
+    container_name: db
+    command: ["npm", "run", "hydrate" ]
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    depends_on:
+      - elasticsearch
+      - db
+    volumes:
+      - ./src:/home/node/app/src
+    container_name: app
+    expose:
+      - '4000'
+    ports:
+      - '4000:4000'
+    command: npm run dev
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200

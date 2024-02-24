@@ -1,6 +1,4 @@
 # auto-complete-service
-a service for auto complete
-
 This is a service that provides out of the box auto complete to registered uses 
 
 Getting started 
@@ -16,11 +14,11 @@ Getting started
 ``npm run start-local``
 
 
-## run test: 
+## Test: 
 ``npm run start-local`` 
 
 
-## what you get inside? 
+## What you get inside? 
 
 two working end point that could be accessed usage example
 

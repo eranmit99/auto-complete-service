@@ -1,8 +1,6 @@
 # auto-complete-service
 This is a service that provides out of the box auto complete to registered uses 
 
-Getting started 
-
 ## Initialize local env
 
 ### system pre-requisites

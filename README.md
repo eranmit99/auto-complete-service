@@ -13,7 +13,7 @@ This is a service that provides out of the box auto complete to registered uses
 
 
 ## Test: 
-``npm run start-local`` 
+``npm run test`` 
 
 
 ## What you get inside? 

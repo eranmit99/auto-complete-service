@@ -18,7 +18,9 @@ This is a service that provides out of the box auto complete to registered uses
 
 ## What you get inside? 
 
-two working end point that could be accessed usage example
+two working endpoint that could be accessed
+
+usage example
 
 1. Fetch search suggestion according to prefix method
    * method: GET
